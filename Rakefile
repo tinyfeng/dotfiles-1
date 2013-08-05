@@ -19,10 +19,26 @@ task :install => [:submodule_init, :submodules] do
   file_operation(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   file_operation(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   file_operation(Dir.glob('tmux/*')) if want_to_install?('tmux config')
-  file_operation(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+  #file_operation(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+  #if want_to_install?('vim configuration (highly recommended)')
+  #  file_operation(Dir.glob('{vim,vimrc}')) 
+  #  Rake::Task["install_vundle"].execute
+  #end
   if want_to_install?('vim configuration (highly recommended)')
+<<<<<<< HEAD
     file_operation(Dir.glob('{vim,vimrc}'))
+=======
+    run %{
+      git clone https://github.com/qianthinking/vimfiles.git ~/.vim
+      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+      ln -snf ~/.vim/vimrc ~/.vimrc
+    }
+>>>>>>> use my vimfiles
     Rake::Task["install_vundle"].execute
+    run %{
+      cd ~/.vim/bundle/YouCompleteMe
+      ./install.sh --clang-completer
+    }
   end
 
   Rake::Task["install_prezto"].execute
