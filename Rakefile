@@ -25,15 +25,15 @@ task :install => [:submodule_init, :submodules] do
   #  Rake::Task["install_vundle"].execute
   #end
   if want_to_install?('vim configuration (highly recommended)')
-<<<<<<< HEAD
-    file_operation(Dir.glob('{vim,vimrc}'))
-=======
     run %{
-      git clone https://github.com/qianthinking/vimfiles.git ~/.vim
-      git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-      ln -snf ~/.vim/vimrc ~/.vimrc
+      git clone https://github.com/qianthinking/vimfiles.git $HOME/.yadr/vimfiles
+      ln -snf $HOME/.yadr/vimfiles $HOME/.vim
+      ln -snf $HOME/.vim/vimrc $HOME/.vimrc
+      ln -snf $HOME/.vim/vimrc.bundles $HOME/.vim/vundles.vim
     }
->>>>>>> use my vimfiles
+    run %{ mkdir -p $HOME/.vimbackup }
+    run %{ mkdir -p $HOME/.vimswp }
+    run %{ mkdir -p $HOME/.vimundo }
     Rake::Task["install_vundle"].execute
     run %{
       cd ~/.vim/bundle/YouCompleteMe
@@ -115,14 +115,14 @@ task :install_vundle do
 
   puts ""
 
-  vundle_path = File.join('vim','bundle', 'vundle')
+  vundle_path = File.join('vimfiles','bundle', 'vundle')
   unless File.exists?(vundle_path)
     run %{
       cd $HOME/.yadr
       git clone https://github.com/gmarik/vundle.git #{vundle_path}
     }
   end
-
+  
   Vundle::update_vundle
 end
 
