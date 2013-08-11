@@ -35,10 +35,7 @@ task :install => [:submodule_init, :submodules] do
     run %{ mkdir -p $HOME/.vimswp }
     run %{ mkdir -p $HOME/.vimundo }
     Rake::Task["install_vundle"].execute
-    run %{
-      cd ~/.vim/bundle/YouCompleteMe
-      ./install.sh --clang-completer
-    }
+    Rake::Task["compile_ycm"].execute
   end
 
   Rake::Task["install_prezto"].execute
@@ -124,6 +121,14 @@ task :install_vundle do
   }
 
   Vundle::update_vundle
+end
+
+desc "compile YouCompleteMe"
+task :compile_ycm do
+  run %{
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
+  }
 end
 
 task :default => 'install'
