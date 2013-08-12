@@ -5,6 +5,7 @@
 #  * Single line prompt
 #
 # Authors:
+#   Leon Li <qianthinking@gmail.com>
 #   Steve Losh <steve@stevelosh.com>
 #   Bart Trojanowski <bart@jukie.net>
 #   Brian Carper <brian@carper.ca>
@@ -13,6 +14,7 @@
 #   Yan Pritzker <yan@pritzker.ws>
 
 function prompt_qianthinking_precmd {
+  current_time=`date "+%H:%M:%S"`
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
@@ -69,8 +71,16 @@ function prompt_qianthinking_setup {
   # ruby info (rvm, rbenv)
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
-  PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"$ "
-  RPROMPT='%F{blue}${ruby_info[version]}'
+  PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"$%(?.%F{norm} .%F{red}(%?%) "
+  RPROMPT='%F{blue}${ruby_info[version]}[$current_time]'
+}
+
+function prompt_awreece_is_ssh {
+  # Actually, sudo etc clear a bunch of environment variables, including
+  # SSH_CONNECTION, so this doesn't always work. Unfortunately, I don't know
+  # the best way to make it work. For now, I'll hide it in a function and I can
+  # update it when I figure out a better way later.
+  [[ -n $SSH_CONNECTION ]]
 }
 
 prompt_qianthinking_setup "$@"
