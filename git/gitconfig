@@ -47,13 +47,15 @@
 
   # log
   l = log --graph --date=short
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
   changelog = log --pretty=format:\" * %s\"
   shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
   # pull
-  pl = pull                         # pull
+  pl  = pull                        # pull
+  plr = pull --rebase               # pull with rebase
 
   # push
   ps = push                         # push
@@ -61,6 +63,10 @@
   # rebase
   rc = rebase --continue            # continue rebase
   rs = rebase --skip                # skip rebase
+  ra = rebase --abort                # abort rebase
+  
+  # merge
+  ra = merge --abort                # abort rebase
 
   # remote
   r = remote -v                     # show remotes (verbose)
