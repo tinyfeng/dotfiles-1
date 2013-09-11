@@ -25,15 +25,22 @@ task :install => [:submodule_init, :submodules] do
   #  Rake::Task["install_vundle"].execute
   #end
   if want_to_install?('vim configuration (highly recommended)')
-    run %{
-      git clone https://github.com/qianthinking/vimfiles.git $HOME/.yadr/vimfiles
-      ln -snf $HOME/.yadr/vimfiles $HOME/.vim
-      ln -snf $HOME/.vim/vimrc $HOME/.vimrc
-      ln -snf $HOME/.vim/vimrc.bundles $HOME/.vim/vundles.vim
-    }
-    run %{ mkdir -p $HOME/.vimbackup }
-    run %{ mkdir -p $HOME/.vimswp }
-    run %{ mkdir -p $HOME/.vimundo }
+    if File.exists?(File.join(ENV['HOME'], ".yadr", 'vimfiles'))
+      run %{
+        cd $HOME/.yadr/vimfiles
+        git pull origin master
+      }
+    else
+      run %{
+        git clone https://github.com/qianthinking/vimfiles.git $HOME/.yadr/vimfiles
+        ln -snf $HOME/.yadr/vimfiles $HOME/.vim
+        ln -snf $HOME/.vim/vimrc $HOME/.vimrc
+        ln -snf $HOME/.vim/vimrc.bundles $HOME/.vim/vundles.vim
+      }
+      run %{ mkdir -p $HOME/.vimbackup }
+      run %{ mkdir -p $HOME/.vimswp }
+      run %{ mkdir -p $HOME/.vimundo }
+    end
     Rake::Task["install_vundle"].execute
     unless File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
       Rake::Task["compile_ycm"].execute
@@ -117,10 +124,17 @@ task :install_vundle do
 
   puts ""
   
-  run %{
-    cd $HOME/.yadr
-    git clone https://github.com/gmarik/vundle.git #{File.join('vimfiles','bundle', 'vundle')}
-  }
+  if File.exists?(File.join(ENV['HOME'], ".yadr", 'vimfiles', 'bundle', 'vundle'))
+    run %{
+      cd $HOME/.yadr/vimfiles/bundle/vundle
+      git pull origin master
+    }
+  else
+    run %{
+      cd $HOME/.yadr
+      git clone https://github.com/gmarik/vundle.git #{File.join('vimfiles','bundle', 'vundle')}
+    }
+  end
 
   Vundle::update_vundle
 end
