@@ -41,10 +41,9 @@ task :install => [:submodule_init, :submodules] do
       run %{ mkdir -p $HOME/.vimswp }
       run %{ mkdir -p $HOME/.vimundo }
     end
+    has_ycm = File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
     Rake::Task["install_vundle"].execute
-    unless File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
-      Rake::Task["compile_ycm"].execute
-    end
+    Rake::Task["compile_ycm"].execute unless has_ycm
   end
 
   Rake::Task["install_prezto"].execute
