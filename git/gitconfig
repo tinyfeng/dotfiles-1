@@ -95,6 +95,38 @@
   svnr = svn rebase
   svnd = svn dcommit
   svnl = svn log --oneline --show-commit
+
+  #period
+  ld = log -p --since="0am"
+  l2 = log -p --since=2.days.ago
+  l3 = log -p --since=3.days.ago
+  l4 = log -p --since=4.days.ago
+  l5 = log -p --since=5.days.ago
+  l6 = log -p --since=6.days.ago
+  lw = log -p --since=1.week.ago
+  l2w = log -p --since=2.weeks.ago
+  l3w = log -p --since=3.weeks.ago
+  lm = log -p --since=1.month.ago
+  wd = whatchanged --since="0am"
+  w2 = whatchanged --since=2.days.ago
+  w3 = whatchanged --since=3.days.ago
+  w4 = whatchanged --since=4.days.ago
+  w5 = whatchanged --since=5.days.ago
+  w6 = whatchanged --since=6.days.ago
+  ww = whatchanged --since=1.week.ago
+  w2w = whatchanged --since=2.weeks.ago
+  w3w = whatchanged --since=3.weeks.ago
+  wm = whatchanged --since=1.month.ago
+  dd = diff HEAD 'HEAD@{0am}'
+  d2 = diff HEAD 'HEAD@{2.days.ago}'
+  d3 = diff HEAD 'HEAD@{3.days.ago}'
+  d4 = diff HEAD 'HEAD@{4.days.ago}'
+  d5 = diff HEAD 'HEAD@{5.days.ago}'
+  d6 = diff HEAD 'HEAD@{6.days.ago}'
+  dw = diff HEAD 'HEAD@{1.week.ago}'
+  d2w = diff HEAD 'HEAD@{2.weeks.ago}'
+  d3w = diff HEAD 'HEAD@{3.weeks.ago}'
+  dm = diff HEAD 'HEAD@{1.month.ago}'
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
