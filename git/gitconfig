@@ -97,7 +97,7 @@
   svnl = svn log --oneline --show-commit
 
   #period
-  ld = log -p --since="0am"
+  ld = log -p --since="1am"
   l2 = log -p --since=2.days.ago
   l3 = log -p --since=3.days.ago
   l4 = log -p --since=4.days.ago
@@ -107,7 +107,7 @@
   l2w = log -p --since=2.weeks.ago
   l3w = log -p --since=3.weeks.ago
   lm = log -p --since=1.month.ago
-  wd = whatchanged --since="0am"
+  wd = whatchanged --since="1am"
   w2 = whatchanged --since=2.days.ago
   w3 = whatchanged --since=3.days.ago
   w4 = whatchanged --since=4.days.ago
@@ -117,7 +117,7 @@
   w2w = whatchanged --since=2.weeks.ago
   w3w = whatchanged --since=3.weeks.ago
   wm = whatchanged --since=1.month.ago
-  dd = diff HEAD 'HEAD@{0am}'
+  dd = diff HEAD 'HEAD@{1am}'
   d2 = diff HEAD 'HEAD@{2.days.ago}'
   d3 = diff HEAD 'HEAD@{3.days.ago}'
   d4 = diff HEAD 'HEAD@{4.days.ago}'
