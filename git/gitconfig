@@ -117,16 +117,16 @@
   w2w = whatchanged --since=2.weeks.ago
   w3w = whatchanged --since=3.weeks.ago
   wm = whatchanged --since=1.month.ago
-  dd = diff HEAD 'HEAD@{1am}'
-  d2 = diff HEAD 'HEAD@{2.days.ago}'
-  d3 = diff HEAD 'HEAD@{3.days.ago}'
-  d4 = diff HEAD 'HEAD@{4.days.ago}'
-  d5 = diff HEAD 'HEAD@{5.days.ago}'
-  d6 = diff HEAD 'HEAD@{6.days.ago}'
-  dw = diff HEAD 'HEAD@{1.week.ago}'
-  d2w = diff HEAD 'HEAD@{2.weeks.ago}'
-  d3w = diff HEAD 'HEAD@{3.weeks.ago}'
-  dm = diff HEAD 'HEAD@{1.month.ago}'
+  dd = diff 'HEAD@{1am}' HEAD
+  d2 = diff 'HEAD@{2.days.ago}' HEAD
+  d3 = diff 'HEAD@{3.days.ago}' HEAD
+  d4 = diff 'HEAD@{4.days.ago}' HEAD
+  d5 = diff 'HEAD@{5.days.ago}' HEAD
+  d6 = diff 'HEAD@{6.days.ago}' HEAD
+  dw = diff 'HEAD@{1.week.ago}' HEAD
+  d2w = diff 'HEAD@{2.weeks.ago}' HEAD
+  d3w = diff 'HEAD@{3.weeks.ago}' HEAD
+  dm = diff 'HEAD@{1.month.ago}' HEAD
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
