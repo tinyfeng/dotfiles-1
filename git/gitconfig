@@ -98,6 +98,7 @@
 
   #period
   ld = log -p --since="1am"
+  l1 = log -p --since=1.day.ago
   l2 = log -p --since=2.days.ago
   l3 = log -p --since=3.days.ago
   l4 = log -p --since=4.days.ago
@@ -108,6 +109,7 @@
   l3w = log -p --since=3.weeks.ago
   lm = log -p --since=1.month.ago
   wd = whatchanged --since="1am"
+  w1 = whatchanged --since=1.day.ago
   w2 = whatchanged --since=2.days.ago
   w3 = whatchanged --since=3.days.ago
   w4 = whatchanged --since=4.days.ago
@@ -118,6 +120,7 @@
   w3w = whatchanged --since=3.weeks.ago
   wm = whatchanged --since=1.month.ago
   dd = diff --ignore-space-change 'HEAD@{1am}' HEAD
+  d1 = diff --ignore-space-change 'HEAD@{1.day.ago}' HEAD
   d2 = diff --ignore-space-change 'HEAD@{2.days.ago}' HEAD
   d3 = diff --ignore-space-change 'HEAD@{3.days.ago}' HEAD
   d4 = diff --ignore-space-change 'HEAD@{4.days.ago}' HEAD
