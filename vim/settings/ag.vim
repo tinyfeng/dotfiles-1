@@ -1,6 +1,6 @@
 " Open the Ag command and place the cursor into the quotes
-nmap ,ag :Ag ""<Left>
-nmap ,af :AgFile ""<Left>
+nmap ;ag :Ag ""<Left>
+nmap ;af :AgFile ""<Left>
 
 " Ignore tags, .tags
 if split(system("ag --version"), "[ \n\r\t]")[2] =~ '\d\+.\(\(2[5-9]\)\|\([3-9][0-9]\)\)\(.\d\+\)\?'
