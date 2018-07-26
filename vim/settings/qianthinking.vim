@@ -16,7 +16,6 @@ noremap <silent> <leader>y y:call system('yank', @0)<Return>
 
 set mouse=nv "Enable mouse use in all modes
 set ttyfast "Send more characters for redraws
-set ttymouse=xterm2
 
 " complete
 set completeopt=menu,menuone,preview
@@ -35,7 +34,7 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 au BufNewFile,BufRead {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
-au FileType text setlocal textwidth=80
+au FileType text setlocal textwidth=120
 " return previous editing position
 au BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |

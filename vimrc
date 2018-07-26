@@ -1,9 +1,53 @@
+"set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+"set nocompatible
 set ttyfast
-set lazyredraw
-set clipboard=unnamed
+"set lazyredraw
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>. dd
 " source ~/.vimrc.before if it exists.
 if filereadable(expand("~/.vimrc.before"))
@@ -11,8 +55,7 @@ if filereadable(expand("~/.vimrc.before"))
 endif
 
 " ================ General Config ====================
-syntax on
-set clipboard=unnamed
+set clipboard+=unnamed
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -64,7 +107,6 @@ set tabstop=2
 set expandtab
 
 vnoremap <leader>p "0p
-vnoremap <leader>P "0P
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -157,10 +199,35 @@ nnoremap <Leader>sh :sh<cr>
 :autocmd FileType javascript :iabbrev <buffer> iff if (){}<esc>i<CR><esc>kla
 :autocmd FileType javascript :iabbrev <buffer> funn function(){}<esc>i<CR><esc>k6la
 
+"let g:molokai_original = 1
 
+nnoremap j gj
+nnoremap k gk
+
+:set nocursorcolumn
+:set nocursorline
+:set guifont=Monaco:h14
+:set lines=999 columns=9999 
+let g:ycm_min_num_identifier_candidate_chars = 3
+let g:ycm_key_invoke_completion = '<C-t>'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+:syntax off
+
+
+
+"nnoremap <C-c> :w !pbcopy<CR><CR>
+"nnoremap "+p :r !pbpaste<CR><CR>
 " ctrl-x for cut
-vmap <C-x> :!pbcopy<cr>
+vnoremap <C-x> :!pbcopy<cr>
+:nnoremap <leader>sp :set paste<cr>
+:nnoremap <leader>snp :set nopaste<cr>
+:nnoremap da viwd
 " ctrl-c for copy
-vmap <C-c> :w !pbcopy<cr><cr>
+"vnoremap <C-c> :.w !pbcopy<cr><cr>
+map <leader>y y:e ~/clipsongzboard<CR>P:w<cr>:w !pbcopy<CR><cr>:1,$d<cr>:w<cr><C-o><C-o>
+" ctrl-v for paste
+"nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+" ctrl-c for copy
+"vnoremap <C-c> :.w !pbcopy<cr><cr>
 " ctrl-v for paste
 "nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
