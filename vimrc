@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -211,8 +211,9 @@ nnoremap k gk
 let g:ycm_min_num_identifier_candidate_chars = 3
 let g:ycm_key_invoke_completion = '<C-t>'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-:syntax off
+:syntax on
 
+:set fdm=indent
 
 
 "nnoremap <C-c> :w !pbcopy<CR><CR>
